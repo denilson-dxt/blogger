@@ -1,8 +1,13 @@
 using API.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<DataContext>(options => 
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"));
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -10,7 +15,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DataContext>();
 builder.Services.AddApplicationServicesExtensions();
 builder.Services.AddIdentityServicesExtensions();
 

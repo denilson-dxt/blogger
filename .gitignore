@@ -12,6 +12,6 @@ Domain/obj/
 
 Persistence/bin/
 Persistence/obj/
-
+Persistence/Migrations/
 .vscode/
 .idea/

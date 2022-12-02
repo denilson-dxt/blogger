@@ -1,0 +1,17 @@
+API/bin/
+API/obj/
+
+Application/bin/
+Application/obj/
+
+Infrastructure/bin/
+Infrastructure/obj/
+
+Domain/bin/
+Domain/obj/
+
+Persistence/bin/
+Persistence/obj/
+
+.vscode/
+.idea/

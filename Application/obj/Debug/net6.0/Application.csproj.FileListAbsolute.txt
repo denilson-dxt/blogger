@@ -1,0 +1,15 @@
+/media/denny/My Files/Programming/C#/blogger/Application/bin/Debug/net6.0/Application.deps.json
+/media/denny/My Files/Programming/C#/blogger/Application/bin/Debug/net6.0/Application.dll
+/media/denny/My Files/Programming/C#/blogger/Application/bin/Debug/net6.0/Application.pdb
+/media/denny/My Files/Programming/C#/blogger/Application/bin/Debug/net6.0/Persistence.dll
+/media/denny/My Files/Programming/C#/blogger/Application/bin/Debug/net6.0/Persistence.pdb
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/Application.csproj.AssemblyReference.cache
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/Application.GeneratedMSBuildEditorConfig.editorconfig
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/Application.AssemblyInfoInputs.cache
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/Application.AssemblyInfo.cs
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/Application.csproj.CoreCompileInputs.cache
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/Application.csproj.CopyComplete
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/Application.dll
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/refint/Application.dll
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/Application.pdb
+/media/denny/My Files/Programming/C#/blogger/Application/obj/Debug/net6.0/ref/Application.dll

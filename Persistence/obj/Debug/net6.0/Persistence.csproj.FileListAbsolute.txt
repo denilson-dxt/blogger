@@ -1,0 +1,15 @@
+/media/denny/My Files/Programming/C#/blogger/Persistence/bin/Debug/net6.0/Persistence.deps.json
+/media/denny/My Files/Programming/C#/blogger/Persistence/bin/Debug/net6.0/Persistence.dll
+/media/denny/My Files/Programming/C#/blogger/Persistence/bin/Debug/net6.0/Persistence.pdb
+/media/denny/My Files/Programming/C#/blogger/Persistence/bin/Debug/net6.0/Domain.dll
+/media/denny/My Files/Programming/C#/blogger/Persistence/bin/Debug/net6.0/Domain.pdb
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/Persistence.csproj.AssemblyReference.cache
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/Persistence.GeneratedMSBuildEditorConfig.editorconfig
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/Persistence.AssemblyInfoInputs.cache
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/Persistence.AssemblyInfo.cs
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/Persistence.csproj.CoreCompileInputs.cache
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/Persistence.csproj.CopyComplete
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/Persistence.dll
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/refint/Persistence.dll
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/Persistence.pdb
+/media/denny/My Files/Programming/C#/blogger/Persistence/obj/Debug/net6.0/ref/Persistence.dll

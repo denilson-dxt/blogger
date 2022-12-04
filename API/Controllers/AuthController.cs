@@ -64,7 +64,6 @@ public class AuthController : BaseAPIController
         await profilePicture.CopyToAsync(pictureStream);
         return Ok(await _mediator.Send(new UpdateUserProfilePicture.UpdateUserProfilePictureCommand
         {
-            Id = "d6fb757d-5991-44be-8b4f-68c2ca1ba9a7",
             ProfilePictureStream = pictureStream
         }));
     }

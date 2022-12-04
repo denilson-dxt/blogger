@@ -1,8 +1,15 @@
 using API.Extensions;
+using Application.Helpers.MappingProfiles;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using MediatR;
+using Application.Users;
+using API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
+builder.Services.AddMediatR(typeof(CreateUser.CreateUserCommand).Assembly);
 
 builder.Services.AddDbContext<DataContext>(options => 
 {
@@ -16,7 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationServicesExtensions();
-builder.Services.AddIdentityServicesExtensions();
+builder.Services.AddIdentityServicesExtensions(builder.Configuration);
 
 var app = builder.Build();
 
@@ -29,8 +36,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseMiddleware<ErrorHandlingMiddleware>();
+app.UseMiddleware<AuthenticatedUserGetterMiddleware>();
 app.MapControllers();
 
 app.Run();

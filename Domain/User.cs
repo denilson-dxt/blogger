@@ -8,5 +8,5 @@ namespace Domain;
 
 public class User:IdentityUser
 {
-    
+    public string? ProfilePicture { get; set; } = null;
 }

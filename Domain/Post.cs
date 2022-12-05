@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Domain;
-public class Post
+public class Post:BaseEntity
 {
-    public string Id { get; set; }
     public string Title { get; set; }
     public string Slug { get; set; }
     public string Content { get; set; }

@@ -13,5 +13,6 @@ public class MappingProfiles : Profile
     public MappingProfiles()
     {
         CreateMap<User, UserDto>();
+        CreateMap<Category, CategoryDto>();
     }
 }

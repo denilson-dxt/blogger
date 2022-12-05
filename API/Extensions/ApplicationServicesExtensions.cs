@@ -13,6 +13,7 @@ public static class ApplicationServicesExtensions
     public static IServiceCollection AddApplicationServicesExtensions(this IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IFileUploader, LocalFileUploader>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthenticateUser, JWtUserAuthentication>();

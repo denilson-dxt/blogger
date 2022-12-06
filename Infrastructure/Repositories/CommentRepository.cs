@@ -1,0 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Application.Interfaces;
+using Domain;
+using Persistence;
+
+namespace Infrastructure.Repositories;
+public class CommentRepository: GenericRepository<Comment>, ICommentRepository
+{
+    public CommentRepository(DataContext context):base(context)
+    {
+        
+    }
+}

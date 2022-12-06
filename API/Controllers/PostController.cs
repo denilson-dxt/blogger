@@ -32,6 +32,15 @@ public class PostController:BaseAPIController
         return Ok(await _mediator.Send(new ListAllPosts.ListAllPostsQuery()));
     }
 
+    [HttpGet("{slug}")]
+    public async Task<ActionResult<PostDto>> GetBySlug(string slug)
+    {
+        return (await _mediator.Send(new GetPostBySlug.GetPostBySlugQuery()
+        {
+            Slug = slug
+        }));
+    }
+
     [HttpPut]
     public async Task<ActionResult<PostDto>> UpdatePost(UpdatePost.UpdatePostCommand request)
     {
@@ -43,4 +52,6 @@ public class PostController:BaseAPIController
     {
         return Ok(await _mediator.Send(request));
     }
+
+
 }

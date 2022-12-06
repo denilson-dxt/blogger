@@ -16,6 +16,7 @@ public static class ApplicationServicesExtensions
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ITagRepository, TagRepository>();
         services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<IFileUploader, LocalFileUploader>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthenticateUser, JWtUserAuthentication>();

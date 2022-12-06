@@ -12,10 +12,12 @@ namespace API.Middlewares;
 public class ErrorHandlingMiddleware
 {
     private readonly RequestDelegate _next;
+    private readonly ILogger<ErrorHandlingMiddleware> _logger;
 
-    public ErrorHandlingMiddleware(RequestDelegate next)
+    public ErrorHandlingMiddleware(RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger)
     {
         _next = next;
+        _logger = logger;
     }
     public async Task Invoke(HttpContext context)
     {
@@ -23,7 +25,7 @@ public class ErrorHandlingMiddleware
         {
             await _next(context);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             await _handleException(context, e);
         }
@@ -31,20 +33,23 @@ public class ErrorHandlingMiddleware
     private async Task _handleException(HttpContext context, Exception e)
     {
         object error = null;
-        switch(e)
+        switch (e)
         {
             case ApiException exception:
-            {
-                context.Response.StatusCode = exception.StatusCode;
-                error = exception.Errors;
-            }
-            break;
+                {
+                    context.Response.StatusCode = exception.StatusCode;
+                    _logger.LogError(exception, "API ERROR");
+                    error = exception.Errors;
+                }
+                break;
             default:
-            {
-                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                error = e.Message;
-            }
-            break;
+                {
+                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    _logger.LogError(e, "SERVER ERROR");
+
+                    error = e.Message;
+                }
+                break;
         }
         context.Response.ContentType = "application/json";
         var response = JsonSerializer.SerializeToDocument(error);

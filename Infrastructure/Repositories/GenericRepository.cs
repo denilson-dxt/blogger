@@ -34,9 +34,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T:BaseEntity
         return true;
     }
 
-    public Task<IEnumerable<T>> FilterMany(System.Linq.Expressions.Expression<Func<T, bool>> query)
+    public async Task<IEnumerable<T>> FilterMany(System.Linq.Expressions.Expression<Func<T, bool>> query)
     {
-        throw new NotImplementedException();
+        return await _context.Set<T>().Where(query).ToListAsync();
     }
 
     public Task<T> FilterOne(System.Linq.Expressions.Expression<Func<T, bool>> query)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Domain;
 
@@ -9,8 +10,10 @@ public class CommentDto
 {
     public string Id { get; set; }
     public string Content { get; set; }
-    public User Owner { get; set; }
-    public Post Post { get; set; }
+    public UserDto Owner { get; set; }
+    
+    [JsonIgnore]
+    public PostDto Post { get; set; }
     public DateTime PublishedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 }

@@ -30,7 +30,7 @@ namespace Infrastructure.Repositories
 
         public async Task<IEnumerable<Post>> ListAll()
         {
-            return await _context.Posts.Include(p => p.User).Include(p => p.Categories).Include(p => p.Comments).Include(p => p.Tags).ToListAsync();
+            return await _context.Posts.Include(p => p.User).Include(p => p.Categories).Include(p => p.Tags).ToListAsync();
         }
     }
 }

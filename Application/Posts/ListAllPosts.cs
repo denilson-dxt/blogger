@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Dtos;
+using Application.Errors;
 using Application.Interfaces;
 using AutoMapper;
 using MediatR;

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Dtos;
 using Application.Posts;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -25,6 +26,7 @@ public class PostController:BaseAPIController
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<PostDto>>> ListAll()
     {
         return Ok(await _mediator.Send(new ListAllPosts.ListAllPostsQuery()));

@@ -7,5 +7,5 @@ using Domain;
 namespace Application.Interfaces;
 public interface ICommentRepository : IGenericRepository<Comment>
 {
-    
+    public Task<IEnumerable<Comment>> GetByPostId(string postId);   
 }

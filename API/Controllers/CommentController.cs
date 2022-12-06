@@ -28,4 +28,26 @@ public class CommentController :BaseAPIController
     {
         return Ok(await _mediator.Send(new ListAllComments.ListAllCommentsQuery()));
     }
+
+    [HttpPut]
+    public async Task<ActionResult<CommentDto>> Update(UpdateComment.UpdateCommentCommand request)
+    {
+        return Ok(await _mediator.Send(request));
+    }
+
+    [HttpDelete]
+    public async Task<ActionResult<bool>> Delete(DeleteComment.DeleteCommentCommand request)
+    {
+        return Ok(await _mediator.Send(request));
+    }
+
+    [HttpGet("post/{postId}")]
+    public async Task<ActionResult<List<CommentDto>>> GetByPostId(string postId)
+    {
+        System.Console.WriteLine(postId);
+        return Ok(await _mediator.Send(new GetCommentsByPostId.GetCommentsByPostIdQuery()
+        {
+            PostId = postId
+        }));
+    }
 }

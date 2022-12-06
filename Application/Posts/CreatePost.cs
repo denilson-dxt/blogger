@@ -16,6 +16,7 @@ public class CreatePost
     public class CreatePostCommand : IRequest<PostDto>
     {
         public string Title { get; set; }
+        public string Image { get; set; }
         public string Slug { get; set; }
         public string Content { get; set; }
         public List<string> CommentsId { get; set; }
@@ -50,6 +51,7 @@ public class CreatePost
             {
                 Id = Guid.NewGuid().ToString(),
                 Title = request.Title,
+                Image = request.Image,
                 Slug = request.Slug,
                 Content = request.Content,
                 PublishedAt = DateTime.UtcNow,

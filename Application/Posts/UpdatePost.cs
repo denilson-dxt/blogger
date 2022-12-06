@@ -17,6 +17,7 @@ public class UpdatePost
     {
         public string Id { get; set; }
         public string Title { get; set; }
+        public string Image { get; set; }
         public string Slug { get; set; }
         public string Content { get; set; }
         public List<string> CommentsId { get; set; }
@@ -49,6 +50,7 @@ public class UpdatePost
             post.Categories = categories.ToList<Category>();
             post.Tags = tags.ToList<Tag>();
             post.Title = request.Title;
+            post.Image = request.Image;
             post.Slug = request.Slug;
             post.Content = request.Content;
             post.EditedAt = DateTime.UtcNow;

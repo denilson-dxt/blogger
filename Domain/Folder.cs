@@ -10,7 +10,7 @@ public class Folder:BaseEntity
     public string Name { get; set; }
     public DateTime CreatedAt{get;set;} = DateTime.UtcNow;
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
-
+    
     public List<File> Files { get; set; }
 
 }

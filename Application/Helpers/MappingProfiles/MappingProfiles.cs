@@ -17,5 +17,6 @@ public class MappingProfiles : Profile
         CreateMap<Tag, TagDto>();
         CreateMap<Post, PostDto>();
         CreateMap<Folder, FolderDto>();
+        CreateMap<Domain.File, FileDto>();
     }
 }

@@ -76,6 +76,6 @@ public class AuthController : BaseAPIController
         if(user == null)
             return BadRequest("User credentials dont match");
         var token =  await _authenticateUser.AuthenticateUser(user) as string;
-        return Ok(token);
+        return Ok(new {token});
     }
 }

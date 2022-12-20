@@ -5,6 +5,7 @@ using Persistence;
 using MediatR;
 using Application.Users;
 using API.Middlewares;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,14 @@ app.UseCors(options =>
 	    .AllowAnyMethod()
 	    .AllowAnyHeader();
 });
+
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Uploads")),
+    RequestPath = new PathString("/Uploads")
+});
+Console.WriteLine(Path.Combine(Directory.GetCurrentDirectory(), @"Uploads"));
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<ErrorHandlingMiddleware>();

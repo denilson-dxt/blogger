@@ -17,6 +17,7 @@ public class CreateFile
         public string Name { get; set; }
         public string? ParentId { get; set; }
         public MemoryStream File { get; set; }
+        public string FileName{get;set;}
     }
     public class CreateFileCommandHandler : IRequestHandler<CreateFileCommand, FileDto>
     {
@@ -41,7 +42,7 @@ public class CreateFile
                 if (parentfolder is null)
                     throw new ApiException((int)HttpStatusCode.NotFound, "Parent folder not found");
             }
-            var path = await _fileUploader.UploadFromStream(request.File);
+            var path = await _fileUploader.UploadFromStream(request.File, request.FileName);
             var file = new Domain.File
             {
                 Id = Guid.NewGuid().ToString(),

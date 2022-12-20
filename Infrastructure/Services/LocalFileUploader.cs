@@ -9,14 +9,18 @@ namespace Infrastructure.Services;
 public class LocalFileUploader : IFileUploader
 {
 
-    public async Task<string> UploadFromStream(Stream stream)
+    public async Task<string> UploadFromStream(Stream stream, string? filename)
     {
-        string filePath = Path.Join("Uploads", Guid.NewGuid().ToString());
+        string filePath = Path.Join("Uploads", filename);
         if (!Directory.Exists("Uploads"))
             Directory.CreateDirectory("Uploads");
 
-        FileStream file = new FileStream(filePath, FileMode.CreateNew);
-        await stream.CopyToAsync(file);
+
+        using (var file = new FileStream(filePath, FileMode.Create))
+        {
+            stream.Position = 0;
+            await stream.CopyToAsync(file);
+        }
         return filePath;
     }
     public async Task<bool> DeleteUploadedFile(string path)

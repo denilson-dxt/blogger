@@ -29,7 +29,7 @@ public class ListFoldersByParentId
         public async Task<IEnumerable<FolderDto>> Handle(ListFoldersByParentIdQuery request, CancellationToken cancellationToken)
         {
             var parentFolder = await _folderRepository.GetById(request.ParentId);
-            if(parentFolder is null)
+            if(parentFolder is null && request.ParentId != "root")
                 throw new ApiException((int)HttpStatusCode.NotFound, "Parent folder not found");
             var folders = await _folderRepository.GetByParentId(request.ParentId);
             return _mapper.Map<IEnumerable<FolderDto>>(folders);

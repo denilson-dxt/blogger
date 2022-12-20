@@ -38,7 +38,8 @@ public class CreateUser
             string profilePicturePath = null;
             if (request.ProfilePicture != null)
             {
-                profilePicturePath = await _fileUploader.UploadFromStream(request.ProfilePicture);
+                string fileName = Guid.NewGuid().ToString() + ".png";
+                profilePicturePath = await _fileUploader.UploadFromStream(request.ProfilePicture, fileName);
             }
             var user = new User
             {

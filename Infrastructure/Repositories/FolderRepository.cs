@@ -19,6 +19,8 @@ public class FolderRepository:GenericRepository<Domain.Folder>,IFolderRepository
 
     public async Task<IEnumerable<Folder>> GetByParentId(string parentId)
     {
+        if(parentId == "root")
+            parentId = null;
         var folders = await _context.Folders.Where(f=>f.ParentId == parentId).ToListAsync();
         return folders;
     }

@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 namespace Application.Interfaces;
 public interface IFileUploader
 {
-    public Task<string> UploadFromStream(Stream stream);
+    public Task<string> UploadFromStream(Stream stream, string? fileName);
     public Task<bool> DeleteUploadedFile(string path);
 }

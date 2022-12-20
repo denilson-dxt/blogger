@@ -1,3 +1,4 @@
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using API.RequestModels;
 using Application.Dtos;
 using Application.Files;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -27,7 +29,8 @@ public class FilesController:BaseAPIController
         {
             Name = fileName,
             File = file,
-            ParentId = request.ParentId
+            ParentId = request.ParentId,
+            FileName = Guid.NewGuid().ToString() + Path.GetExtension(fileName)
         }));
     }
 
@@ -56,6 +59,14 @@ public class FilesController:BaseAPIController
     public async Task<ActionResult<IEnumerable<FileDto>>> ListAllFiles()
     {
         return Ok(await _mediator.Send(new ListAllFiles.ListAllFilesQuery()));
+    }
+
+    [HttpGet("{file}")]
+    [AllowAnonymous]
+    public async Task<ActionResult> GetFileContent(string file){
+        Byte[] b;
+        b = await System.IO.File.ReadAllBytesAsync(Path.Join("Uploads", file));
+        return File(b, FileMimeHelper.GetMIMEType(file));
     }
 }
 

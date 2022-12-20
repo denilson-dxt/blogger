@@ -19,7 +19,7 @@ public class CreatePost
         public string Image { get; set; }
         public string Slug { get; set; }
         public string Content { get; set; }
-        public List<string> CommentsId { get; set; }
+        public List<string> CategoriesId { get; set; }
         public List<string> TagsId { get; set; }
     }
     public class CreatePostCommandHandler : IRequestHandler<CreatePostCommand, PostDto>
@@ -45,7 +45,7 @@ public class CreatePost
                 throw new ApiException((int)HttpStatusCode.Conflict, "This slug already exists, slug must be unique");
             
             var user = await _userService.GetActualUser();
-            var categories = await _categoryRepository.FilterMany(c => request.CommentsId.Contains(c.Id));
+            var categories = await _categoryRepository.FilterMany(c => request.CategoriesId.Contains(c.Id));
             var tags = await _tagRepository.FilterMany(t => request.TagsId.Contains(t.Id));
             var post = new Post
             {

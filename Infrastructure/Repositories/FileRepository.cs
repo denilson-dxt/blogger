@@ -18,6 +18,8 @@ public class FileRepository:GenericRepository<Domain.File>,IFileRepository
 
     public async Task<IEnumerable<Domain.File>> ListByParentId(string parentId)
     {
+        if(parentId == "root")
+            parentId = null;
         return await _context.Files.Where(f => f.ParentFolder.Id == parentId).ToListAsync();
     }
 }

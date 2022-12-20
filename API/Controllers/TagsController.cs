@@ -8,11 +8,11 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
-public class TagController:BaseAPIController
+public class TagsController:BaseAPIController
 {
     private readonly IMediator _mediator;
 
-    public TagController(IMediator mediator)
+    public TagsController(IMediator mediator)
     {
         _mediator = mediator;
     }

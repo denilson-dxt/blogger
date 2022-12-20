@@ -20,7 +20,7 @@ public class UpdatePost
         public string Image { get; set; }
         public string Slug { get; set; }
         public string Content { get; set; }
-        public List<string> CommentsId { get; set; }
+        public List<string> CategoriesId { get; set; }
         public List<string> TagsId { get; set; }
     }
     public class UpdatePostCommandHandler : IRequestHandler<UpdatePostCommand, PostDto>
@@ -43,7 +43,7 @@ public class UpdatePost
             if (post is null)
                 throw new ApiException((int)HttpStatusCode.NotFound, "Post not found");
 
-            var categories = await _categoryRepository.FilterMany(c => request.CommentsId.Contains(c.Id));
+            var categories = await _categoryRepository.FilterMany(c => request.CategoriesId.Contains(c.Id));
             var tags = await _tagRepository.FilterMany(t => request.TagsId.Contains(t.Id));
 
 

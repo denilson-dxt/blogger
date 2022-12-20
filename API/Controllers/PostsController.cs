@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
-public class PostController:BaseAPIController
+public class PostsController:BaseAPIController
 {
     private readonly IMediator _mediator;
 
-    public PostController(IMediator mediator)
+    public PostsController(IMediator mediator)
     {
         _mediator = mediator;
     }

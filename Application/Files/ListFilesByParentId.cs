@@ -31,7 +31,7 @@ public class ListFilesByParentId
         public async Task<IEnumerable<FileDto>> Handle(ListFilesByParentIdQuery request, CancellationToken cancellationToken)
         {
             var folder = await _folderRepository.GetById(request.ParentId);
-            if(folder is null) throw new ApiException((int)HttpStatusCode.NotFound, "Folder not found");
+            if(folder is null && request.ParentId != "root") throw new ApiException((int)HttpStatusCode.NotFound, "Folder not found");
             
             var files = await _fileRepository.ListByParentId(request.ParentId);
             return _mapper.Map<IEnumerable<FileDto>>(files);

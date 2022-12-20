@@ -31,7 +31,9 @@ public class UpdateUserProfilePicture
             var user = await _userService.GetActualUser();
             if (user is null)
                 throw new ApiException((int)HttpStatusCode.NotFound, "User not found");
-            user.ProfilePicture = await _fileUploader.UploadFromStream(request.ProfilePictureStream);
+
+            string fileName = Guid.NewGuid().ToString() + ".png";
+            user.ProfilePicture = await _fileUploader.UploadFromStream(request.ProfilePictureStream, fileName);
             await _userRepository.UpdateUser(user);
             return user.ProfilePicture;
         }

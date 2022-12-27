@@ -37,15 +37,17 @@ public class ErrorHandlingMiddleware
         {
             case ApiException exception:
                 {
-                    context.Response.StatusCode = exception.StatusCode;
                     _logger.LogError(exception, "API ERROR");
+                    context.Response.StatusCode = exception.StatusCode;
+                    //_logger.LogError(exception, "API ERROR");
                     error = exception.Errors;
                 }
                 break;
-            default:
+            case Exception:
                 {
-                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     _logger.LogError(e, "SERVER ERROR");
+                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    //_logger.LogError(e, "SERVER ERROR");
 
                     error = e.Message;
                 }

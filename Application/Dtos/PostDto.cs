@@ -17,5 +17,5 @@ public class PostDto
     public DateTime EditedAt{get;set;} = DateTime.Now;
     public List<CategoryDto> Categories { get; set; }
     public List<TagDto> Tags { get; set; }
-    public List<Comment> Comments { get; set; }
+    public List<CommentDto> Comments { get; set; }
 }

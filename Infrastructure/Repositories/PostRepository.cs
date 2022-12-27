@@ -24,7 +24,7 @@ namespace Infrastructure.Repositories
         }
         public async Task<Post> GetPostBySlug(string slug)
         {
-            var post = await _context.Posts.Include(p => p.User).Include(p => p.Categories).Include(p=>p.Tags).FirstOrDefaultAsync(p => p.Slug == slug);
+            var post = await _context.Posts.Include(p => p.User).Include(p => p.Categories).Include(p=>p.Tags).Include(p => p.Comments).FirstOrDefaultAsync(p => p.Slug == slug);
             return post;
         }
 

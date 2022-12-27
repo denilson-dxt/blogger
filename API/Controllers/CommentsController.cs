@@ -8,11 +8,11 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
-public class CommentController :BaseAPIController
+public class CommentsController :BaseAPIController
 {
     private readonly IMediator _mediator;
 
-    public CommentController(IMediator mediator)
+    public CommentsController(IMediator mediator)
     {
         _mediator = mediator;
     }

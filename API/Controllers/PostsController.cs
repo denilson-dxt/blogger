@@ -33,6 +33,7 @@ public class PostsController:BaseAPIController
     }
 
     [HttpGet("{slug}")]
+    [AllowAnonymous]
     public async Task<ActionResult<PostDto>> GetBySlug(string slug)
     {
         return (await _mediator.Send(new GetPostBySlug.GetPostBySlugQuery()

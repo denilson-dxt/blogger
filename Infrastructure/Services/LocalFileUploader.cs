@@ -21,7 +21,8 @@ public class LocalFileUploader : IFileUploader
             stream.Position = 0;
             await stream.CopyToAsync(file);
         }
-        return filePath;
+        var host = "https://localhost:7040/api/files/";
+        return  host + filePath;
     }
     public async Task<bool> DeleteUploadedFile(string path)
     {

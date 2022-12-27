@@ -61,11 +61,11 @@ public class FilesController:BaseAPIController
         return Ok(await _mediator.Send(new ListAllFiles.ListAllFilesQuery()));
     }
 
-    [HttpGet("{file}")]
+    [HttpGet("{folder}/{file}")]
     [AllowAnonymous]
-    public async Task<ActionResult> GetFileContent(string file){
+    public async Task<ActionResult> GetFileContent(string folder, string file){
         Byte[] b;
-        b = await System.IO.File.ReadAllBytesAsync(Path.Join("Uploads", file));
+        b = await System.IO.File.ReadAllBytesAsync(Path.Join(folder, file));
         return File(b, FileMimeHelper.GetMIMEType(file));
     }
 }

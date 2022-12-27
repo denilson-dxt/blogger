@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using API.RequestModels;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Application.Dtos;
 
 namespace API.Controllers;
 
@@ -77,5 +78,11 @@ public class AuthController : BaseAPIController
             return BadRequest("User credentials dont match");
         var token =  await _authenticateUser.AuthenticateUser(user) as string;
         return Ok(new {token});
+    }
+
+    [HttpGet("me")]
+    public async Task<ActionResult<UserDto>> Me()
+    {
+        return await _mediator.Send(new GetLoggedUser.GetLoggedUserQuery()); 
     }
 }

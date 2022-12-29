@@ -32,6 +32,18 @@ public class PostsController:BaseAPIController
         return Ok(await _mediator.Send(new ListAllPosts.ListAllPostsQuery()));
     }
 
+    [HttpGet("category/{categorySlug}")]
+    [AllowAnonymous]
+    public async Task<IEnumerable<PostDto>> ListByCategory(string categorySlug)
+    {
+        ListPostsByCategory.ListPostsByCategoryQuery request = new ListPostsByCategory.ListPostsByCategoryQuery()
+        {
+            CategorySlug = categorySlug
+        };
+        return await _mediator.Send(request);
+    }
+
+
     [HttpGet("{slug}")]
     [AllowAnonymous]
     public async Task<ActionResult<PostDto>> GetBySlug(string slug)

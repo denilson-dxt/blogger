@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Categories;
 using Application.Dtos;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -23,6 +24,7 @@ public class CategoriesController : BaseAPIController
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult> ListAll()
     {
         return Ok(await _mediator.Send(new ListAllCategories.ListAllQuery ()));

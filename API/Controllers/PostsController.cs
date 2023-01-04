@@ -43,6 +43,18 @@ public class PostsController:BaseAPIController
         return await _mediator.Send(request);
     }
 
+    [HttpGet("tag/{tagDescription}")]
+    [AllowAnonymous]
+    public async Task<IEnumerable<PostDto>> ListByTag(string tagDescription)
+    {
+        ListPostsByTag.ListPostsByTagQuery request = new ListPostsByTag.ListPostsByTagQuery()
+        {
+            TagDescription = tagDescription
+        };
+        
+        return await _mediator.Send(request);
+    }
+
 
     [HttpGet("{slug}")]
     [AllowAnonymous]

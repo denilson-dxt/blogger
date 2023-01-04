@@ -39,9 +39,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T:BaseEntity
         return await _context.Set<T>().Where(query).ToListAsync();
     }
 
-    public Task<T> FilterOne(System.Linq.Expressions.Expression<Func<T, bool>> query)
+    public async Task<T> FilterOne(System.Linq.Expressions.Expression<Func<T, bool>> query)
     {
-        throw new NotImplementedException();
+        return  await _context.Set<T>().FirstOrDefaultAsync(query);
     }
 
     public async Task<T> GetById(string id)
